@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>`FormSubmitOverlay.js` Demo</title>
+		<style>
+			button {
+				padding: 1em;
+			}
+
+			.dialog {
+				border: none;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				position: fixed;
+				inset: 0;
+				color: #fff;
+				background: transparent;
+				font-size: 1.2rem;
+			}
+
+			@supports not (inset: 0) {
+				.dialog {
+					top: 0;
+					right: 0;
+					bottom: 0;
+					left: 0;
+				}
+			}
+
+			.dialog[open] {
+				display: flex;
+			}
+
+			.dialog::backdrop {
+				background: rgba(0, 0, 0, 0.8);
+			}
+
+			.dialog + .backdrop {
+				position: fixed;
+				inset: 0;
+				background: rgba(0, 0, 0, 0.8);
+			}
+
+			@supports not (inset: 0) {
+				.dialog + .backdrop {
+					top: 0;
+					right: 0;
+					bottom: 0;
+					left: 0;
+				}
+			}
+		</style>
+		<script type="module">
+			import FormSubmitOverlay from './dist/FormSubmitOverlay.js';
+
+			for (const formElement of document.querySelectorAll('.js-submit-overlay')) {
+				new FormSubmitOverlay(formElement);
+			}
+
+			for (const formElement of document.querySelectorAll('.js-submit-auto-cancel')) {
+				formElement.addEventListener('submit', (ev) => {
+					ev.preventDefault();
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<h1>`FormSubmitOverlay.js` Demo</h1>
+
+		<form class="js-submit-overlay" data-dialog-message="&lt;p&gt;Please wait.&lt;/p&gt;" data-dialog-class="dialog">
+			<p><button>Submit</button></p>
+		</form>
+
+		<p>* The overlay will be displayed for a brief moment while the transmission process is completed.</p>
+
+		<form class="js-submit-overlay js-submit-auto-cancel" data-dialog-message="&lt;p&gt;Please wait.&lt;/p&gt;" data-dialog-class="dialog">
+			<p><button>Submit</button></p>
+		</form>
+
+		<p>
+			* The sending process will not take place and the overlay will remain visible. To close the overlay, press the <kbd>Esc</kbd> key or reload it with the
+			<kbd>F5</kbd> key.
+		</p>
+	</body>
+</html>
