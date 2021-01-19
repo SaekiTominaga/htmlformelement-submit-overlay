@@ -1,16 +1,14 @@
 {
 	"compilerOptions": {
 		/* Project Options */
-		"declaration": true,
-		"declarationMap": true,
 		"incremental": true,
 		"module": "ES2020",
-		"outDir": "dist/",
+		"outDir": "script/",
 		"plugins": [
 			{
 				"transform": "ts-transformer-replace-paths",
 				"replaceImportPaths": {
-					"^dialog-polyfill$": "../../../dialog-polyfill/dist/dialog-polyfill.esm.js",
+					"^dialog-polyfill$": "../node_modules/dialog-polyfill/dist/dialog-polyfill.esm.js",
 				}
 			}
 		],

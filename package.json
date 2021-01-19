@@ -10,8 +10,7 @@
 	"author": "Saeki Tominaga",
 	"files": [
 		"dist",
-		"src",
-		"node_modules/dialog-polyfill"
+		"src"
 	],
 	"type": "module",
 	"browser": "dist/FormSubmitOverlay.js",
@@ -22,6 +21,7 @@
 	},
 	"scripts": {
 		"_build:tsc": "ttsc -w",
+		"_build:tsc-githubpages": "ttsc -w -p tsconfig-gihubpages.json",
 		"_build:compress": "onchange -f add -f change -v dist/FormSubmitOverlay.js -- brotlin compress dist/FormSubmitOverlay.js -m 1",
 		"_build:minify": "onchange -f add -f change -v dist/FormSubmitOverlay.js -- terser dist/FormSubmitOverlay.js -o dist/FormSubmitOverlay.min.js -c ecma=2020 --mangle --ecma 2020 --module --source-map content='dist/FormSubmitOverlay.js.map',filename='FormSubmitOverlay.js',includeSources,url='FormSubmitOverlay.min.js.map'",
 		"_build:minify-compress": "onchange -f add -f change -v dist/FormSubmitOverlay.min.js -- brotlin compress dist/FormSubmitOverlay.min.js -m 1",

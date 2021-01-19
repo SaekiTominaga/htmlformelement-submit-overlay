@@ -12,7 +12,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     return privateMap.get(receiver);
 };
 var _thisElement, _dialogElement;
-import dialogPolyfill from '../../../dialog-polyfill/dist/dialog-polyfill.esm.js';
+import dialogPolyfill from '../node_modules/dialog-polyfill/dist/dialog-polyfill.esm.js';
 /**
  * Cover the entire screen with an overlay when form submitting.
  */
