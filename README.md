@@ -8,7 +8,7 @@
 
 ## Examples
 
-```
+```HTML
 <script type="module">
 import FormSubmitOverlay from './dist/FormSubmitOverlay.js';
 
@@ -26,7 +26,7 @@ for (const formElement of document.querySelectorAll('.js-submit-overlay')) {
 
 ## Constructor
 
-```
+```TypeScript
 new FormSubmitOverlay(
   thisElement: HTMLFormElement
 )
