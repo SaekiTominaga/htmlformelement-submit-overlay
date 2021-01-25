@@ -8,6 +8,10 @@ export default class {
      */
     constructor(thisElement: HTMLFormElement);
     /**
+     * Initial processing
+     */
+    init(): void;
+    /**
      * オーバーレイダイアログを生成する
      *
      * @param {string | undefined} className - ダイアログに設定するクラス名

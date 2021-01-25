@@ -8,6 +8,9 @@ export default class {
 
 	#dialogElement!: HTMLDialogElement; // ロード中メッセージを表示する要素
 
+	#submitEventListener: () => void;
+	#windowUnloadEventListener: () => void;
+
 	/**
 	 * @param {HTMLFormElement} thisElement - Target element
 	 */
@@ -40,6 +43,14 @@ export default class {
 
 		this.#thisElement = thisElement;
 
+		this.#submitEventListener = this._submitEvent.bind(this);
+		this.#windowUnloadEventListener = this._windowUnloadEvent.bind(this);
+	}
+
+	/**
+	 * Initial processing
+	 */
+	init(): void {
 		const dialogClassName = this.#thisElement.dataset.dialogClass;
 
 		const dialogMessage = this.#thisElement.dataset.dialogMessage;
@@ -49,11 +60,8 @@ export default class {
 
 		this._create(dialogClassName, dialogMessage);
 
-		const submitEventListener = this._submitEvent.bind(this);
-		const windowUnloadEventListener = this._windowUnloadEvent.bind(this);
-
-		this.#thisElement.addEventListener('submit', submitEventListener, { passive: true });
-		window.addEventListener('unload', windowUnloadEventListener, { passive: true });
+		this.#thisElement.addEventListener('submit', this.#submitEventListener, { passive: true });
+		window.addEventListener('unload', this.#windowUnloadEventListener, { passive: true });
 	}
 
 	/**

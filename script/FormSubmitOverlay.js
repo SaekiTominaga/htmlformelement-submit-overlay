@@ -11,7 +11,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     }
     return privateMap.get(receiver);
 };
-var _thisElement, _dialogElement;
+var _thisElement, _dialogElement, _submitEventListener, _windowUnloadEventListener;
 import dialogPolyfill from '../node_modules/dialog-polyfill/dist/dialog-polyfill.esm.js';
 /**
  * Cover the entire screen with an overlay when form submitting.
@@ -23,6 +23,8 @@ export default class {
     constructor(thisElement) {
         _thisElement.set(this, void 0); // 対象要素
         _dialogElement.set(this, void 0); // ロード中メッセージを表示する要素
+        _submitEventListener.set(this, void 0);
+        _windowUnloadEventListener.set(this, void 0);
         if (window.HTMLDialogElement === undefined) {
             const styleElement = document.createElement('style');
             styleElement.textContent = `
@@ -49,16 +51,21 @@ export default class {
             document.head.insertAdjacentElement('beforeend', styleElement);
         }
         __classPrivateFieldSet(this, _thisElement, thisElement);
+        __classPrivateFieldSet(this, _submitEventListener, this._submitEvent.bind(this));
+        __classPrivateFieldSet(this, _windowUnloadEventListener, this._windowUnloadEvent.bind(this));
+    }
+    /**
+     * Initial processing
+     */
+    init() {
         const dialogClassName = __classPrivateFieldGet(this, _thisElement).dataset.dialogClass;
         const dialogMessage = __classPrivateFieldGet(this, _thisElement).dataset.dialogMessage;
         if (dialogMessage === undefined) {
             throw new Error('Attribute: `data-dialog-message` is not set.');
         }
         this._create(dialogClassName, dialogMessage);
-        const submitEventListener = this._submitEvent.bind(this);
-        const windowUnloadEventListener = this._windowUnloadEvent.bind(this);
-        __classPrivateFieldGet(this, _thisElement).addEventListener('submit', submitEventListener, { passive: true });
-        window.addEventListener('unload', windowUnloadEventListener, { passive: true });
+        __classPrivateFieldGet(this, _thisElement).addEventListener('submit', __classPrivateFieldGet(this, _submitEventListener), { passive: true });
+        window.addEventListener('unload', __classPrivateFieldGet(this, _windowUnloadEventListener), { passive: true });
     }
     /**
      * オーバーレイダイアログを生成する
@@ -92,5 +99,5 @@ export default class {
         __classPrivateFieldGet(this, _dialogElement).close();
     }
 }
-_thisElement = new WeakMap(), _dialogElement = new WeakMap();
+_thisElement = new WeakMap(), _dialogElement = new WeakMap(), _submitEventListener = new WeakMap(), _windowUnloadEventListener = new WeakMap();
 //# sourceMappingURL=FormSubmitOverlay.js.map

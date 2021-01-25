@@ -13,7 +13,8 @@
 import FormSubmitOverlay from './dist/FormSubmitOverlay.js';
 
 for (const formElement of document.querySelectorAll('.js-submit-overlay')) {
-  new FormSubmitOverlay(formElement);
+  const formSubmitOverlay = new FormSubmitOverlay(formElement);
+  formSubmitOverlay.init();
 }
 </script>
 

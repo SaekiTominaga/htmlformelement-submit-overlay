@@ -56,7 +56,8 @@
 			import FormSubmitOverlay from './script/FormSubmitOverlay.js';
 
 			for (const formElement of document.querySelectorAll('.js-submit-overlay')) {
-				new FormSubmitOverlay(formElement);
+				const formSubmitOverlay = new FormSubmitOverlay(formElement);
+				formSubmitOverlay.init();
 			}
 
 			for (const formElement of document.querySelectorAll('.js-submit-auto-cancel')) {

@@ -222,7 +222,7 @@
         "affectsGlobalScope": true
       },
       "../src/formsubmitoverlay.ts": {
-        "version": "54747c6f2d28adb8a99df26c19fd2df24f8f0d742f1106fbe92aef5470333f56",
+        "version": "07dcc017b969bf7ec926a5aa765b64d9a89f6dd8104add27be3af408d4af482e",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/node/globals.d.ts": {
