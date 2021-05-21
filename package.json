@@ -13,20 +13,16 @@
 		"src"
 	],
 	"type": "module",
-	"browser": "dist/FormSubmitOverlay.js",
+	"main": "dist/FormSubmitOverlay.js",
+	"module": "dist/FormSubmitOverlay.js",
 	"types": "dist/FormSubmitOverlay.d.ts",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/SaekiTominaga/htmlformelement-submit-overlay.git"
 	},
 	"scripts": {
-		"_build:tsc": "ttsc -w",
-		"_build:tsc-githubpages": "ttsc -w -p tsconfig-gihubpages.json",
-		"_build:compress": "onchange -f add -f change -v dist/FormSubmitOverlay.js -- brotlin compress dist/FormSubmitOverlay.js -m 1",
-		"_build:minify": "onchange -f add -f change -v dist/FormSubmitOverlay.js -- terser dist/FormSubmitOverlay.js -o dist/FormSubmitOverlay.min.js -c ecma=2020 --mangle --ecma 2020 --module --source-map content='dist/FormSubmitOverlay.js.map',filename='FormSubmitOverlay.js',includeSources,url='FormSubmitOverlay.min.js.map'",
-		"_build:minify-compress": "onchange -f add -f change -v dist/FormSubmitOverlay.min.js -- brotlin compress dist/FormSubmitOverlay.min.js -m 1",
-		"_build:minify-declaration": "onchange -f add -f change -v dist/FormSubmitOverlay.d.ts -- cpy dist/FormSubmitOverlay.d.ts dist --rename=FormSubmitOverlay.min.d.ts",
-		"build": "run-p _build:*"
+		"build": "ttsc",
+		"watch": "ttsc -w"
 	},
 	"dependencies": {
 		"dialog-polyfill": "^0.5.6"
@@ -34,14 +30,9 @@
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^4.13.0",
 		"@typescript-eslint/parser": "^4.13.0",
-		"brotlin": "^1.1.0",
-		"cpy-cli": "^3.1.1",
 		"eslint": "^7.17.0",
 		"eslint-config-prettier": "^7.1.0",
 		"eslint-plugin-jsdoc": "^30.7.9",
-		"npm-run-all": "^4.1.5",
-		"onchange": "^7.1.0",
-		"terser": "^5.5.1",
 		"ts-transformer-replace-paths": "^1.0.1",
 		"ttypescript": "^1.5.12",
 		"typescript": "^4.1.3"
