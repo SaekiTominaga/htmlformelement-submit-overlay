@@ -36,15 +36,15 @@ new FormSubmitOverlay(
 ### Parameters
 
 <dl>
-<dt>thisElement [required]</dt>
+<dt><code>thisElement</code> [required]</dt>
 <dd>Target element</dd>
 </dl>
 
 ## HTMLElement Attributes
 
 <dl>
-<dt>data-dialog-message [required]</dt>
+<dt><code>data-dialog-message</code> [required]</dt>
 <dd>Text to display in the dialog. You can write HTML markup directly.</dd>
-<dt>data-dialog-class [optional]</dt>
+<dt><code>data-dialog-class</code> [optional]</dt>
 <dd>Class name to be set in the dialog element.</dd>
 </dl>
